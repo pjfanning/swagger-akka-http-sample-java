@@ -11,6 +11,9 @@ import akka.actor.ActorSystem;
 import akka.http.javadsl.ConnectHttp;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
+import akka.http.javadsl.model.ContentTypes;
+import akka.http.javadsl.model.HttpEntities;
+import akka.http.javadsl.model.HttpEntity;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
 import akka.http.javadsl.server.AllDirectives;
@@ -53,7 +56,8 @@ public class HttpServerMinimalExample extends AllDirectives {
   @ApiOperation(value = "hello", code = 200, nickname = "hello", httpMethod = "GET", response = String.class)
   @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error") })
   public Route createRoute() {
-    final Route route = route(path("hello", () -> get(() -> complete("<h1>Say hello to akka-http</h1>"))));
+    HttpEntity.Strict entity = HttpEntities.create(ContentTypes.TEXT_HTML_UTF8, "<h1>Say hello to akka-http</h1>");
+    final Route route = route(path("hello", () -> get(() -> complete(entity))));
     final CorsSettings settings = CorsSettings.defaultSettings();
     return cors(settings, () -> route);
   }
