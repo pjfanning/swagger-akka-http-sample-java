@@ -1,20 +1,17 @@
 package com.example.akka;
 
-import static ch.megard.akka.http.cors.javadsl.CorsDirectives.cors;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.PathMatchers;
 import akka.http.javadsl.server.Route;
 import ch.megard.akka.http.cors.javadsl.settings.CorsSettings;
-import io.swagger.jaxrs.Reader;
-import io.swagger.jaxrs.config.DefaultReaderConfig;
-import io.swagger.models.Swagger;
-import io.swagger.util.Json;
+import com.github.swagger.akka.javadsl.SwaggerGenerator;
+
+import java.util.Collections;
+import java.util.Set;
+
+import static ch.megard.akka.http.cors.javadsl.CorsDirectives.cors;
 
 class SwaggerDocService extends AllDirectives {
-  DefaultReaderConfig readerConfig = new DefaultReaderConfig();
 
   Route createRoute() {
     final Route route = route(path(PathMatchers.segment("api-docs").slash("swagger.json"), () -> get(() -> complete(swaggerJson()))));
@@ -23,13 +20,12 @@ class SwaggerDocService extends AllDirectives {
   }
 
   private String swaggerJson() {
-    try {
-      final Swagger swaggerConfig = new Swagger();
-      final Reader reader = new Reader(swaggerConfig, readerConfig);
-      final Swagger swagger = reader.read(HttpServerMinimalExample.class);
-      return Json.pretty().writeValueAsString(swagger);
-    } catch (JsonProcessingException e) {
-      throw new RuntimeException(e);
-    }
+    SwaggerGenerator generator = new SwaggerGenerator() {
+      @Override
+      public Set<Class<?>> apiClasses() {
+        return Collections.singleton(HttpServerMinimalExample.class);
+      }
+    };
+    return generator.generateSwaggerJson();
   }
 }
