@@ -5,6 +5,7 @@ import akka.http.javadsl.server.PathMatchers;
 import akka.http.javadsl.server.Route;
 import ch.megard.akka.http.cors.javadsl.settings.CorsSettings;
 import com.github.swagger.akka.javadsl.SwaggerGenerator;
+import io.swagger.models.Info;
 
 import java.util.Collections;
 import java.util.Set;
@@ -24,6 +25,12 @@ class SwaggerDocService extends AllDirectives {
       @Override
       public Set<Class<?>> apiClasses() {
         return Collections.singleton(HttpServerMinimalExample.class);
+      }
+
+      @Override
+      public Info info() {
+        Info info = new Info().description("Simple akka-http application").version("1.0");
+        return info;
       }
     };
     return generator.generateSwaggerJson();
