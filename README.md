@@ -1,6 +1,8 @@
-# swagger-akka-http-java
+# swagger-akka-http-sample-java
 
-Demonstrates a simple Java-based Akka-Http sample that exposes Swagger documentation.
+Sample Java-based Akka-HTTP application that exposes its API as Swagger JSON.
+
+This sample uses https://github.com/swagger-akka-http/swagger-akka-http while https://github.com/pjfanning/swagger-akka-http-sample-java does not.
 
 ```sbt run```
 
