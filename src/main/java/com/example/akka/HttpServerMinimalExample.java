@@ -43,9 +43,9 @@ public class HttpServerMinimalExample extends AllDirectives {
 
     final Route routes = app.route(app.createRoute(), new SwaggerDocService().createRoute());
     final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = routes.flow(system, materializer);
-    final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 8080), materializer);
+    final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp.toHost("localhost", 12345), materializer);
 
-    System.out.println("Server online at http://localhost:8080/\nPress RETURN to stop...");
+    System.out.println("Server online at http://localhost:12345/\nPress RETURN to stop...");
     System.in.read(); // let it run until user presses return
 
     binding.thenCompose(ServerBinding::unbind) // trigger unbinding from the port

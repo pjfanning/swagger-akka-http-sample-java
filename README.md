@@ -6,6 +6,6 @@ This sample uses https://github.com/swagger-akka-http/swagger-akka-http while ht
 
 ```sbt run```
 
-curl http://localhost:8080/hello
+curl http://localhost:12345/hello
 
-curl http://localhost:8080/api-docs/swagger.json
+curl http://localhost:12345/api-docs/swagger.json
