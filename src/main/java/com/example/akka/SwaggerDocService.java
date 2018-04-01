@@ -8,7 +8,6 @@ import akka.http.javadsl.server.PathMatchers;
 import akka.http.javadsl.server.Route;
 import ch.megard.akka.http.cors.javadsl.settings.CorsSettings;
 
-//import com.github.swagger.akka.javadsl.Converter;
 import com.github.swagger.akka.javadsl.SwaggerGenerator;
 import io.swagger.v3.oas.models.info.Info;
 
@@ -21,11 +20,6 @@ class SwaggerDocService extends AllDirectives {
     public Set<Class<?>> apiClasses() {
       return Collections.singleton(HttpServerMinimalExample.class);
     }
-
-//    @Override
-//    public Converter converter() {
-//      return null;
-//    }
 
     @Override
     public Info info() {
