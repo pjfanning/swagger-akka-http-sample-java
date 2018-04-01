@@ -21,12 +21,7 @@ import akka.http.javadsl.server.Route;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
 import ch.megard.akka.http.cors.javadsl.settings.CorsSettings;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 
-@Api(value = "/", produces = "text/html")
 @Path("/")
 public class HttpServerMinimalExample extends AllDirectives {
 
@@ -53,8 +48,8 @@ public class HttpServerMinimalExample extends AllDirectives {
   }
 
   @Path("/hello")
-  @ApiOperation(value = "hello", code = 200, nickname = "hello", httpMethod = "GET", response = String.class)
-  @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error") })
+  //@ApiOperation(value = "hello", code = 200, nickname = "hello", httpMethod = "GET", response = String.class)
+  //@ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error") })
   public Route createRoute() {
     HttpEntity.Strict entity = HttpEntities.create(ContentTypes.TEXT_HTML_UTF8, "<h1>Say hello to akka-http</h1>");
     final Route route = route(path("hello", () -> get(() -> complete(entity))));
