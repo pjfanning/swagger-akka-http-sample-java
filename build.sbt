@@ -1,4 +1,4 @@
-name := "swagger-akka-http-java"
+name := "swagger-akka-http-sample-java"
 
 scalaVersion := "2.12.5"
 
