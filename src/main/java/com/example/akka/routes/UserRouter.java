@@ -8,7 +8,6 @@ import akka.http.javadsl.server.Route;
 import com.example.akka.entities.ListUsersResponse;
 import com.example.akka.entities.Status;
 import com.example.akka.entities.User;
-import io.swagger.annotations.Api;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;

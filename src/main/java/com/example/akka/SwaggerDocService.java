@@ -11,7 +11,6 @@ import com.example.akka.routes.AdminRoutes;
 import com.example.akka.routes.UserRouter;
 import com.github.swagger.akka.javadsl.Converter;
 import com.github.swagger.akka.javadsl.SwaggerGenerator;
-import io.swagger.models.Scheme;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -54,7 +53,7 @@ class SwaggerDocService extends AllDirectives {
 
     @Override
     public List<String> schemes() {
-      return List.of(Scheme.HTTPS.toValue(), Scheme.HTTP.toValue());
+      return List.of("https", "http");
     }
 
     @Override
