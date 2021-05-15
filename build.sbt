@@ -14,7 +14,6 @@ libraryDependencies ++= Seq(
   "jakarta.xml.bind" % "jakarta.xml.bind-api" % "2.3.2",
   "org.glassfish.jaxb" % "jaxb-runtime" % "2.3.2",
   "com.github.swagger-akka-http" %% "swagger-akka-http" % "2.4.2",
-  "io.swagger" % "swagger-jaxrs" % "1.5.18",
   "javax.ws.rs" % "javax.ws.rs-api" % "2.1.1",
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
