@@ -5,12 +5,15 @@ import akka.http.javadsl.model.HttpEntities;
 import akka.http.javadsl.model.HttpEntity;
 import akka.http.javadsl.server.AllDirectives;
 import akka.http.javadsl.server.Route;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 @Tag(name = "admins")
 @Path("/admins")
@@ -26,8 +29,12 @@ public class AdminRoutes extends AllDirectives {
 
   @Path("/test")
   @GET
-  @ApiOperation(value = "test", code = 200, nickname = "test", httpMethod = "GET", response = String.class)
-  @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error") })
+  @Produces({MediaType.APPLICATION_JSON})
+  @Operation(summary = "test", description = "test", responses = {
+                  @ApiResponse(responseCode = "200",
+                          content = {@Content(schema = @Schema(implementation = String.class))}),
+                  @ApiResponse(responseCode = "500", description = "Internal server error")}
+  )
   public Route test() {
     HttpEntity.Strict entity = HttpEntities
         .create(ContentTypes.TEXT_HTML_UTF8, "<h1>Receive Password endpoint</h1>");
@@ -38,8 +45,12 @@ public class AdminRoutes extends AllDirectives {
 
   @Path("/reply")
   @GET
-  @ApiOperation(value = "reply", code = 200, nickname = "test", httpMethod = "GET", response = String.class)
-  @ApiResponses(value = { @ApiResponse(code = 500, message = "Internal server error") })
+  @Produces({MediaType.APPLICATION_JSON})
+  @Operation(summary = "reply", description = "reply", responses = {
+          @ApiResponse(responseCode = "200",
+                  content = {@Content(schema = @Schema(implementation = String.class))}),
+          @ApiResponse(responseCode = "500", description = "Internal server error")}
+  )
   public Route reply() {
     HttpEntity.Strict entity = HttpEntities
         .create(ContentTypes.TEXT_HTML_UTF8, "<h1>reply endpoint</h1>");
