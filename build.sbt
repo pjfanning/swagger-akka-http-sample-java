@@ -8,6 +8,8 @@ resolvers += Resolver.sonatypeRepo("snapshots")
 val akkaVersion = "2.6.14"
 val akkaHttpVersion = "10.2.4"
 
+Compile / mainClass := Some("com.example.akka.Main")
+
 libraryDependencies ++= Seq(
   "jakarta.xml.bind" % "jakarta.xml.bind-api" % "2.3.2",
   "org.glassfish.jaxb" % "jaxb-runtime" % "2.3.2",
@@ -21,3 +23,4 @@ libraryDependencies ++= Seq(
   "ch.megard" %% "akka-http-cors" % "1.1.1",
   "org.slf4j" % "slf4j-simple" % "1.7.30"
 )
+

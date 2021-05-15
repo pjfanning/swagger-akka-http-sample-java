@@ -17,7 +17,7 @@ import java.util.concurrent.CompletionStage;
 public class Main extends AllDirectives {
 
   public static void main(String[] args) throws Exception {
-// boot up server using the route as defined below
+    // boot up server using the route as defined below
     ActorSystem system = ActorSystem.create("routes");
 
     final Http http = Http.get(system);
@@ -27,7 +27,7 @@ public class Main extends AllDirectives {
     // are define.
     Main app = new Main();
 
-    final Route routes = app.route(new Routes().createRoute(), new SwaggerDocService().createRoute());
+    final Route routes = app.concat(new Routes().createRoute(), new SwaggerDocService().createRoute());
     final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = routes.flow(system, materializer);
     final CompletionStage<ServerBinding> binding = http.bindAndHandle(routeFlow, ConnectHttp
         .toHost("localhost", 12345), materializer);
