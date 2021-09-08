@@ -68,6 +68,7 @@ public class UserRouter extends AllDirectives {
       method = "POST",
       requestBody = @RequestBody(
           description = "The user to add",
+          required = true,
           content = @Content(
               schema = @Schema(implementation = User.class),
               mediaType = MediaType.APPLICATION_JSON)),
@@ -97,6 +98,7 @@ public class UserRouter extends AllDirectives {
       },
       requestBody = @RequestBody(
           description = "The user to update",
+          required = true,
           content = @Content(
               schema = @Schema(implementation = User.class),
               mediaType = MediaType.APPLICATION_JSON)),
