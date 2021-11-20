@@ -1,20 +1,18 @@
 name := "swagger-akka-http-sample-java"
 
-scalaVersion := "2.13.6"
+scalaVersion := "2.13.7"
 
 resolvers += Resolver.sonatypeRepo("releases")
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-val akkaVersion = "2.6.16"
-val akkaHttpVersion = "10.2.6"
+val akkaVersion = "2.6.17"
+val akkaHttpVersion = "10.2.7"
 
 Compile / mainClass := Some("com.example.akka.Main")
 
 libraryDependencies ++= Seq(
-  "jakarta.xml.bind" % "jakarta.xml.bind-api" % "2.3.2",
-  "org.glassfish.jaxb" % "jaxb-runtime" % "2.3.2",
-  "com.github.swagger-akka-http" %% "swagger-akka-http" % "2.5.2",
-  "javax.ws.rs" % "javax.ws.rs-api" % "2.1.1",
+  "jakarta.ws.rs" % "jakarta.ws.rs-api" % "3.0.0",
+  "com.github.swagger-akka-http" %% "swagger-akka-http" % "2.6.0",
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
