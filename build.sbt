@@ -12,7 +12,7 @@ Compile / mainClass := Some("com.example.akka.Main")
 
 libraryDependencies ++= Seq(
   "jakarta.ws.rs" % "jakarta.ws.rs-api" % "3.0.0",
-  "com.github.swagger-akka-http" %% "swagger-akka-http" % "2.7.0",
+  "com.github.swagger-akka-http" %% "swagger-akka-http" % "2.8.0",
   "com.typesafe.akka" %% "akka-http" % akkaHttpVersion,
   "com.typesafe.akka" %% "akka-actor" % akkaVersion,
   "com.typesafe.akka" %% "akka-stream" % akkaVersion,
