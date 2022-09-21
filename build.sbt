@@ -1,12 +1,12 @@
 name := "swagger-akka-http-sample-java"
 
-scalaVersion := "2.13.8"
+scalaVersion := "2.13.9"
 
 resolvers += Resolver.sonatypeRepo("releases")
 resolvers += Resolver.sonatypeRepo("snapshots")
 
-val akkaVersion = "2.6.19"
-val akkaHttpVersion = "10.2.9"
+val akkaVersion = "2.6.20"
+val akkaHttpVersion = "10.2.10"
 
 Compile / mainClass := Some("com.example.akka.Main")
 
